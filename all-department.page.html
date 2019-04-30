@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="toolbarback">
+    <ion-icon style="float:left;width:50px;height:30px;color:white" name="ios-arrow-back" (click)='canGoBack()'></ion-icon>
+    <ion-title>固定部门</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contentback">
+  <ion-item-group>
+    <div style="border-radius: 8px; font-size: 18px;margin-top:3% ;padding-top:5%;width:95% ">
+      <!-- <div style="padding-left:5%;padding-right:5%;">{{oneDepartInfo.name}}
+        <ion-icon  slot="end" name="ios-arrow-down" *ngIf="isShowOne" (click)="isShow(false)"></ion-icon>
+        <ion-icon  slot="end" name="ios-arrow-forward" *ngIf="!isShowOne" (click)="isShow(true)"></ion-icon>    
+      </div>   -->
+      <div *ngIf="isShowOne" >
+        <ion-list *ngFor="let twoDepart of oneDepartInfo.children;let i=index;">
+          <ion-item  *ngIf="twoDepart.children!=undefined">
+            <div style="padding-left:4%" *ngIf="isShowAll[i] === 'hide'" (click)="isShowI(i,'show')">{{twoDepart.name}}</div>
+            <div style="padding-left:4%" *ngIf="isShowAll[i] === 'show'" (click)="isShowI(i,'hide')">{{twoDepart.name}}</div>         
+            <ion-icon style="float:right;" slot="end" name="ios-arrow-down" *ngIf="isShowAll[i] === 'show'" (click)="isShowI(i,'hide')"></ion-icon>
+            <ion-icon style="float:right;" slot="end" name="ios-arrow-forward" *ngIf="isShowAll[i] === 'hide'" (click)="isShowI(i,'show')"></ion-icon>    
+          </ion-item>        
+            <div *ngIf="isShowAll[i]=='show'" style="margin-top:5%;padding-left:10%;padding-right:5%;">
+              <ion-list *ngFor="let threeDepart of twoDepart.children">
+                <div>
+                  <ion-item (click)="gotoDepartPeo(uId,uName)">
+                    <span #uId style="display: none">{{threeDepart.id}}</span>
+                    <span #uName>{{threeDepart.name}}</span>
+                  </ion-item>
+                </div>
+              </ion-list>
+            </div>
+          <ion-item *ngIf="twoDepart.children == undefined" (click)="gotoDepartPeo(uId,uName)">
+            <span #uId style="display: none">{{twoDepart.id}}</span>
+            <span #uName style="padding-left:4%">{{twoDepart.name}}</span>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-item-group>
+  <br>
+</ion-content>
