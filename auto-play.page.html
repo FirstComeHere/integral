@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>auto-play</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新页面" refreshingSpinner="circles" refreshingText="加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-slides pager>
+      <ion-slide>
+        <ion-button full color="light" (click)="checkbatch()">选择批次</ion-button>
+      </ion-slide>
+      <ion-slide>
+        <ion-button full color="secondary" (click)="publicprogram()">公共项目</ion-button>
+      </ion-slide>
+      <ion-slide>
+        <ion-button full color="dark" (click)="checkgroup()">选择分组</ion-button>
+      </ion-slide>
+      <ion-slide *ngIf='isChoujiang'>
+        <p (click)="goToLotteryPage()" style="color:red">恭喜：{{chanceNumber}} {{chanceName}}</p>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <Br />
+  <ion-button color="secondary" (click)="selectsutdent()">查询学生</ion-button>
+  <Br />
+  <ion-button color="dark" (click)="addstudent()">添加学生</ion-button>
+  <Br />
+  <ion-button color="secondary" (click)="addgroup()">添加分组</ion-button>
+  <Br />
+  <ion-button color="dark" (click)="starttest()">开始测试</ion-button>
+  <Br />
+  <Br />
+  <p>
+    <ion-button color="danger" (click)="student()">学生端</ion-button>
+  </p>
+
+
+
+</ion-content>
