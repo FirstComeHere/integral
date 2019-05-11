@@ -65,7 +65,7 @@ export class HomeMainPage implements OnInit {
 
   checkbatch() {
     this.router.navigateByUrl('tabs/home/check-batch');
-  }
+  } 
   publicprogram() {
     this.router.navigateByUrl('tabs/home/public-project');
   }
